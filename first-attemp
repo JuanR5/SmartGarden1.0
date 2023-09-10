@@ -1,5 +1,0 @@
-A =1
-if A==1:
-    print("hello world")
-else:
-    print("PEPE")
