@@ -8,7 +8,6 @@ from tensorflow.keras.layers import Dense
 
 import numpy as np
 from matplotlib import pyplot as plt
-%matplotlib inline
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 print('x_train shape:', x_train.shape)
