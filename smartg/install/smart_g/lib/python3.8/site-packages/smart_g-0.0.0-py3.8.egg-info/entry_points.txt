@@ -1,0 +1,4 @@
+[console_scripts]
+image_filterA = smart_g.image_filterA:main
+image_publisher = smart_g.image_publisher:main
+image_subscriber = smart_g.image_subscriber:main
