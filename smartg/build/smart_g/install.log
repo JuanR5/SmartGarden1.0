@@ -1,5 +1,7 @@
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/VideoInputA.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_medianf.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_subscriber.py
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/tracker.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_filterA.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_publisher.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorC.py
@@ -7,8 +9,11 @@
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_filterB.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__init__.py
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorB.py
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/detectorA.py
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/VideoInputA.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_medianf.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_subscriber.cpython-38.pyc
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/tracker.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_filterA.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_publisher.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_colorC.cpython-38.pyc
@@ -16,6 +21,7 @@
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_filterB.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/__init__.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/image_colorB.cpython-38.pyc
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__pycache__/detectorA.cpython-38.pyc
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages/smart_g
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/smart_g/package.xml
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info/dependency_links.txt
@@ -25,6 +31,9 @@
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info/requires.txt
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info/entry_points.txt
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info/SOURCES.txt
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/VideoInput
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/detector
 /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/image_filterA
-/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/image_publisher
-/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/image_subscriber
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/image_filterB
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/image_filterSubs
+/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g/obj_Tracker

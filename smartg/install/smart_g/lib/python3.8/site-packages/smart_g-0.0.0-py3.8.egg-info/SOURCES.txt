@@ -9,7 +9,9 @@ setup.py
 ../build/smart_g/smart_g.egg-info/top_level.txt
 ../build/smart_g/smart_g.egg-info/zip-safe
 resource/smart_g
+smart_g/VideoInputA.py
 smart_g/__init__.py
+smart_g/detectorA.py
 smart_g/image_colorA.py
 smart_g/image_colorB.py
 smart_g/image_colorC.py
@@ -18,6 +20,7 @@ smart_g/image_filterB.py
 smart_g/image_medianf.py
 smart_g/image_publisher.py
 smart_g/image_subscriber.py
+smart_g/tracker.py
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py

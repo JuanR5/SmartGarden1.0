@@ -20,9 +20,12 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'image_publisher = smart_g.image_publisher:main',
-            'image_subscriber = smart_g.image_subscriber:main',
-            'image_filterA = smart_g.image_filterA:main',
+        'VideoInput = smart_g.VideoInputA:main',
+        'image_filterA = smart_g.image_filterA:main',
+        'image_filterB = smart_g.image_filterB:main',
+        'detector = smart_g.detectorA:main',
+        'image_filterSubs = smart_g.image_filterSubs:main',
+        'obj_Tracker = smart_g.tracker:main',
         ],
     },
 )
