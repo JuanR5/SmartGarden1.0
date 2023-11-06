@@ -25,6 +25,20 @@ class ImageFilterA(Node):
         )
         self.subscription  # prevent unused variable warning
 
+        ###
+        # Create the publisher. This publisher will publish an Image
+        # to the filterA_frames topic. The queue size is 10 messages.
+        self.publisher_ = self.create_publisher(Image, "filteredA_frames", 10)
+
+        # We will publish a message every 0.1 seconds
+        timer_period = 0.1  # seconds
+
+        # Create the timer
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+        # Initialize the bridge object  
+        self.filtered_frame = None  
+        
         # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
 
@@ -46,11 +60,27 @@ class ImageFilterA(Node):
         # filter the source image
         img_trs = cv2.filter2D(current_frame, -1, kernel)
 
+        # Store the filtered frame
+        self.filtered_frame = img_trs     
+
         # Display image
-        cv2.imshow("Blur", img_trs)
+        #cv2.imshow("Blur", img_trs)
 
         cv2.waitKey(1)
 
+    def timer_callback(self):
+        """
+        Callback function.
+        This function gets called every 0.1 seconds.
+        """
+         # Check if a frame has been received from the subscriber
+        if self.filtered_frame is not None:
+        # Publish the filtered frame.
+        # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
+            self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='bgr8'))
+
+        # Display the message on the console
+        self.get_logger().info("Publishing filterA frame")
 
 def main(args=None):
     # Initialize the rclpy library

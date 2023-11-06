@@ -24,6 +24,19 @@ class ImageFilterB(Node):
         )
         self.subscription  # prevent unused variable warning
 
+###        # Create the publisher. This publisher will publish an Image
+        # to the filterA_frames topic. The queue size is 10 messages.
+        self.publisher_ = self.create_publisher(Image, "filteredB_frames", 10)
+
+        # We will publish a message every 0.1 seconds
+        timer_period = 0.1  # seconds
+
+        # Create the timer
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+
+        # Initialize the bridge object  
+        self.filtered_frame = None  
+        
         # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
 
@@ -37,7 +50,7 @@ class ImageFilterB(Node):
         # Convert ROS Image message to OpenCV image
         current_frame = self.br.imgmsg_to_cv2(data)
 
-        # invert filter
+        #### INVERTED FILTER
         def invert(img):
             inv = cv2.bitwise_not(img)
             return inv
@@ -45,10 +58,36 @@ class ImageFilterB(Node):
         # making the invert img
         img_rst = invert(current_frame)
 
+        # Store the filtered frame
+        self.filtered_frame = img_rst    
+        ##########
+        """
+
+        # Convert the current frame to grayscale
+        img_gray = cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY)
+
+        # Store the grayscale frame
+        self.filtered_frame = img_gray
+        """
+
         # Display image
-        cv2.imshow("Inverted", img_rst)
+        #cv2.imshow("Inverted", img_rst)
 
         cv2.waitKey(1)
+
+    def timer_callback(self):
+            """
+            Callback function.
+            This function gets called every 0.1 seconds.
+            """
+            # Check if a frame has been received from the subscriber
+            if self.filtered_frame is not None:
+            # Publish the filtered frame.
+            # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
+                self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='bgr8')) ## if gray scale encoding = mono8
+
+            # Display the message on the console
+            self.get_logger().info("Publishing filterB frame")
 
 
 def main(args=None):

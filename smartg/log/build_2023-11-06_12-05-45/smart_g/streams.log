@@ -1,0 +1,57 @@
+[2.572s] Invoking command in '/home/juan/ProyectoPR/SmartGarden1.0/smartg/src': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build install --record /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
+[2.752s] /home/juan/.local/lib/python3.8/site-packages/setuptools/dist.py:498: SetuptoolsDeprecationWarning: Invalid dash-separated options
+[2.753s] !!
+[2.753s] 
+[2.753s]         ********************************************************************************
+[2.753s]         Usage of dash-separated 'script-dir' will not be supported in future
+[2.753s]         versions. Please use the underscore name 'script_dir' instead.
+[2.754s] 
+[2.754s]         This deprecation is overdue, please update your project and remove deprecated
+[2.754s]         calls to avoid build errors in the future.
+[2.754s] 
+[2.754s]         See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+[2.754s]         ********************************************************************************
+[2.754s] 
+[2.754s] !!
+[2.755s]   opt = self.warn_dash_deprecation(opt, section)
+[2.934s] running egg_info
+[2.961s] writing ../build/smart_g/smart_g.egg-info/PKG-INFO
+[2.962s] writing dependency_links to ../build/smart_g/smart_g.egg-info/dependency_links.txt
+[2.962s] writing entry points to ../build/smart_g/smart_g.egg-info/entry_points.txt
+[2.962s] writing requirements to ../build/smart_g/smart_g.egg-info/requires.txt
+[2.962s] writing top-level names to ../build/smart_g/smart_g.egg-info/top_level.txt
+[3.245s] reading manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[3.247s] writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[3.247s] running build
+[3.247s] running build_py
+[3.248s] copying smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[3.249s] running install
+[3.268s] /home/juan/.local/lib/python3.8/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[3.268s] !!
+[3.268s] 
+[3.268s]         ********************************************************************************
+[3.268s]         Please avoid running ``setup.py`` directly.
+[3.268s]         Instead, use pypa/build, pypa/installer or other
+[3.269s]         standards-based tools.
+[3.269s] 
+[3.269s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[3.269s]         ********************************************************************************
+[3.269s] 
+[3.269s] !!
+[3.269s]   self.initialize_options()
+[3.280s] running install_lib
+[3.309s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[3.310s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/tracker.py to tracker.cpython-38.pyc
+[3.312s] running install_data
+[3.339s] running install_egg_info
+[3.368s] removing '/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info' (and everything under it)
+[3.368s] Copying ../build/smart_g/smart_g.egg-info to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info
+[3.379s] running install_scripts
+[3.459s] Installing VideoInput script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[3.460s] Installing detector script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[3.460s] Installing image_filterA script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[3.460s] Installing image_filterB script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[3.460s] Installing image_filterSubs script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[3.461s] Installing obj_Tracker script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[3.461s] writing list of installed files to '/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log'
+[3.527s] Invoked command in '/home/juan/ProyectoPR/SmartGarden1.0/smartg/src' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build install --record /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
