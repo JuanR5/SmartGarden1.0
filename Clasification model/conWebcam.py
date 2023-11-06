@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import os
-
+#recordatorio para SMCV, corre con el ambiente virtual proyectoFin de conda
 # Load the pre-trained model
 leaf_disease_model = load_model('/home/sofia/Proyecto_final/modeloClasificacion/leaf-diseases-detect/leaf-diseases-detect-main/Leaf Deases(96,88).h5')
 
