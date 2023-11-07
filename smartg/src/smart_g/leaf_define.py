@@ -42,8 +42,8 @@ class Leaf_define(Node):
         # Initialize the bridge object  
         self.filtered_frame = None  
         
-        self.text_size = (150, 30) 
-        self.white_background = np.full((self.text_size[1], self.text_size[0], 3), 255, dtype=np.uint8)
+        self.text_size = None
+        self.white_background = None
         
         
         # Used to convert between ROS and OpenCV images
@@ -77,8 +77,8 @@ class Leaf_define(Node):
 
         # Create a white background with the specified size
         #self.white_background = np.zeros((self.text_size[1], self.text_size[0], 3), dtype=np.uint8)
-        self.white_background[:] = (255, 255, 255)  # Set the background to white (255, 255, 255) 
-
+        #self.white_background[:] = (255, 255, 255)  # Set the background to white (255, 255, 255) 
+        self.white_background = np.full((self.text_size[1], self.text_size[0], 3), 255, dtype=np.uint8)
         # Set the font properties for the text
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 0.4  # Adjust the font size (you can change this value)
