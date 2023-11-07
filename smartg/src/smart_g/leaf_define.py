@@ -40,11 +40,7 @@ class Leaf_define(Node):
 
         self.encoding = 'rgb8'  # Initialize encoding to 'rgb8'
         # Initialize the bridge object  
-        self.filtered_frame = None  
-        
-        self.text_size = (150, 30) 
-        self.white_background = np.full((self.text_size[1], self.text_size[0], 3), 255, dtype=np.uint8)
-        
+        self.filtered_frame = None          
         
         # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
@@ -71,18 +67,10 @@ class Leaf_define(Node):
                     'Tomato Late blight', 'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot',
                     'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
 
-       # Define the position and size of the white background
-        text_position = (10, 10)  # Adjust the position as needed
-        self.text_size = (frame.shape[1], self.text_size[1]) # Match the width of the original image
-
-        # Create a white background with the specified size
-        #self.white_background = np.zeros((self.text_size[1], self.text_size[0], 3), dtype=np.uint8)
-        self.white_background[:] = (255, 255, 255)  # Set the background to white (255, 255, 255) 
-
         # Set the font properties for the text
-        font = cv2.FONT_HERSHEY_SIMPLEX
+        font = cv2.FONT_HERSHEY_COMPLEX 
         font_scale = 0.4  # Adjust the font size (you can change this value)
-        font_color = (0, 0, 0)  # Green color
+        font_color = (255, 0, 255)  # Red color
         font_thickness = 1 # Adjust the font thickness (you can change this value)
         # Preprocess the frame (resize to 150x150 and convert to array)
         frame = cv2.resize(frame, (150, 150))
@@ -98,13 +86,10 @@ class Leaf_define(Node):
 
         # Add the text to the white background
         label_text = f"{predicted_class} ({confidence:.2f}%)"
-        cv2.putText(self.white_background, label_text, text_position, font, font_scale, font_color, font_thickness)
-        # Overlay the white background with text on the original image
-        frame_with_text = frame.copy()  # Make a copy of the original image
-        frame_with_text[text_position[1]:text_position[1] + self.text_size[1], text_position[0]:text_position[0] + self.text_size[0]] = self.white_background
+        cv2.putText(frame, label_text, (10, 30), font, font_scale, font_color, font_thickness)
 
         # Display the frame with the label
-        self.filtered_frame = frame_with_text
+        self.filtered_frame = frame
         
         #cv2.imshow('Leaf Disease Classification', frame)
         cv2.waitKey(1)
@@ -125,7 +110,7 @@ class Leaf_define(Node):
                 filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
             # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
                 #self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='rgb8')) ## if gray scale encoding = mono8
-                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='rgb8'))
+                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='bgr8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
 
