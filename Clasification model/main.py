@@ -16,9 +16,9 @@ label_name = ['Apple scab','Apple Black rot', 'Apple Cedar apple rust', 'Apple h
 'Tomato Spider mites', 'Tomato Target Spot', 'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
                    
 
-path = input('Imag Path')
+#path = input('Imag Path')
 
-#path= 'maiz.JPG'
+path= 'maiz.JPG'
 
 img = img_to_array(load_img(path,target_size=(150,150,3)))
 
