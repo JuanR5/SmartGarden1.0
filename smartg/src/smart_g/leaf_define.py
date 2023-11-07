@@ -42,6 +42,10 @@ class Leaf_define(Node):
         # Initialize the bridge object  
         self.filtered_frame = None  
         
+        self.text_size = (150, 30) 
+        self.white_background = np.full((self.text_size[1], self.text_size[0], 3), 255, dtype=np.uint8)
+        
+        
         # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
 
@@ -67,13 +71,13 @@ class Leaf_define(Node):
                     'Tomato Late blight', 'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot',
                     'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
 
-        # Set the window size (you can change these values to make the window larger)
-        #window_width = 500
-        #window_height = 500
+       # Define the position and size of the white background
+        text_position = (10, 10)  # Adjust the position as needed
+        self.text_size = (frame.shape[1], self.text_size[1]) # Match the width of the original image
 
-        # Create the window
-        #cv2.namedWindow('Leaf Disease Classification', cv2.WINDOW_NORMAL)
-        #cv2.resizeWindow('Leaf Disease Classification', window_width, window_height)
+        # Create a white background with the specified size
+        #self.white_background = np.zeros((self.text_size[1], self.text_size[0], 3), dtype=np.uint8)
+        self.white_background[:] = (255, 255, 255)  # Set the background to white (255, 255, 255) 
 
         # Set the font properties for the text
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -92,12 +96,15 @@ class Leaf_define(Node):
         predicted_class = label_names[np.argmax(prediction)]
         confidence = prediction[0][np.argmax(prediction)] * 100
 
-        # Display the predicted label and confidence on the frame
+        # Add the text to the white background
         label_text = f"{predicted_class} ({confidence:.2f}%)"
-        cv2.putText(frame, label_text, (10, 30), font, font_scale, font_color, font_thickness)
+        cv2.putText(self.white_background, label_text, text_position, font, font_scale, font_color, font_thickness)
+        # Overlay the white background with text on the original image
+        frame_with_text = frame.copy()  # Make a copy of the original image
+        frame_with_text[text_position[1]:text_position[1] + self.text_size[1], text_position[0]:text_position[0] + self.text_size[0]] = self.white_background
 
         # Display the frame with the label
-        self.filtered_frame = frame
+        self.filtered_frame = frame_with_text
         
         #cv2.imshow('Leaf Disease Classification', frame)
         cv2.waitKey(1)
