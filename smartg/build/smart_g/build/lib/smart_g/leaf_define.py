@@ -68,10 +68,10 @@ class Leaf_define(Node):
                     'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
 
         # Set the font properties for the text
-        font = cv2.FONT_HERSHEY_SIMPLEX
+        font = cv2.FONT_HERSHEY_COMPLEX 
         font_scale = 0.4  # Adjust the font size (you can change this value)
-        font_color = (0, 0, 255)  # Red color
-        font_thickness = 1# Adjust the font thickness (you can change this value)
+        font_color = (255, 0, 255)  # Red color
+        font_thickness = 1 # Adjust the font thickness (you can change this value)
         # Preprocess the frame (resize to 150x150 and convert to array)
         frame = cv2.resize(frame, (150, 150))
         frame = img_to_array(frame)
@@ -110,7 +110,7 @@ class Leaf_define(Node):
                 filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
             # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
                 #self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='rgb8')) ## if gray scale encoding = mono8
-                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='rgb8'))
+                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='bgr8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
 
