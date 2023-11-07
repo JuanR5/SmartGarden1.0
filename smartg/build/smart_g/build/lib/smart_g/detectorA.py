@@ -37,7 +37,7 @@ class DetectorA(Node):
         # Initialize the bridge object  
         self.filtered_frame = None
 
-        self.encoding = 'bgr8'  # Initialize encoding to 'rgb8'
+        self.encoding = 'rgb8'  # Initialize encoding to 'rgb8'
         
         # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
@@ -54,7 +54,7 @@ class DetectorA(Node):
             if selection in ["filteredSubs_frames"]:
                 self.encoding = 'mono8'
             else:
-                self.encoding = 'bgr8'
+                self.encoding = 'rgb8'
 
             root.destroy()
 
