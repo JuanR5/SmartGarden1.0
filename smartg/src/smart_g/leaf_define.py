@@ -38,6 +38,7 @@ class Leaf_define(Node):
         # Create the timer
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
+        self.encoding = 'rgb8'  # Initialize encoding to 'rgb8'
         # Initialize the bridge object  
         self.filtered_frame = None  
         
@@ -67,18 +68,18 @@ class Leaf_define(Node):
                     'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
 
         # Set the window size (you can change these values to make the window larger)
-        window_width = 500
-        window_height = 500
+        #window_width = 500
+        #window_height = 500
 
         # Create the window
-        cv2.namedWindow('Leaf Disease Classification', cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('Leaf Disease Classification', window_width, window_height)
+        #cv2.namedWindow('Leaf Disease Classification', cv2.WINDOW_NORMAL)
+        #cv2.resizeWindow('Leaf Disease Classification', window_width, window_height)
 
         # Set the font properties for the text
         font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 0.3  # Adjust the font size (you can change this value)
+        font_scale = 0.4  # Adjust the font size (you can change this value)
         font_color = (0, 0, 0)  # Green color
-        font_thickness = 1  # Adjust the font thickness (you can change this value)
+        font_thickness = 1 # Adjust the font thickness (you can change this value)
         # Preprocess the frame (resize to 150x150 and convert to array)
         frame = cv2.resize(frame, (150, 150))
         frame = img_to_array(frame)
@@ -96,11 +97,14 @@ class Leaf_define(Node):
         cv2.putText(frame, label_text, (10, 30), font, font_scale, font_color, font_thickness)
 
         # Display the frame with the label
-        cv2.imshow('Leaf Disease Classification', frame)
+        self.filtered_frame = frame
+        
+        #cv2.imshow('Leaf Disease Classification', frame)
+        cv2.waitKey(1)
 
         # Exit the loop if the 'q' key is pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            cv2.destroyAllWindows()     
+        #if cv2.waitKey(1) & 0xFF == ord('q'):
+            #cv2.destroyAllWindows()     
 
     def timer_callback(self):
             """
@@ -110,9 +114,11 @@ class Leaf_define(Node):
             # Check if a frame has been received from the subscriber
             if self.filtered_frame is not None:
             # Publish the filtered frame.
+            # Convert to 8-bit RGB (rgb8) format
+                filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
             # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
-                self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='bgr8')) ## if gray scale encoding = mono8
-
+                #self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='rgb8')) ## if gray scale encoding = mono8
+                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='rgb8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
 
