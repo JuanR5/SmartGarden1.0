@@ -38,6 +38,7 @@ class Leaf_define(Node):
         # Create the timer
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
+        self.encoding = 'rgb8'  # Initialize encoding to 'rgb8'
         # Initialize the bridge object  
         self.filtered_frame = None  
         
@@ -78,7 +79,7 @@ class Leaf_define(Node):
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 0.4  # Adjust the font size (you can change this value)
         font_color = (0, 0, 0)  # Green color
-        font_thickness = 1.5  # Adjust the font thickness (you can change this value)
+        font_thickness = 1 # Adjust the font thickness (you can change this value)
         # Preprocess the frame (resize to 150x150 and convert to array)
         frame = cv2.resize(frame, (150, 150))
         frame = img_to_array(frame)
@@ -97,6 +98,7 @@ class Leaf_define(Node):
 
         # Display the frame with the label
         self.filtered_frame = frame
+        
         #cv2.imshow('Leaf Disease Classification', frame)
         cv2.waitKey(1)
 
@@ -112,9 +114,11 @@ class Leaf_define(Node):
             # Check if a frame has been received from the subscriber
             if self.filtered_frame is not None:
             # Publish the filtered frame.
+            # Convert to 8-bit RGB (rgb8) format
+                filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
             # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
-                self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='bgr8')) ## if gray scale encoding = mono8
-
+                #self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='rgb8')) ## if gray scale encoding = mono8
+                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='rgb8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
 
