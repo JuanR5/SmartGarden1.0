@@ -114,7 +114,7 @@ class Leaf_define(Node):
                 self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='bgr8')) ## if gray scale encoding = mono8
 
             # Display the message on the console
-            self.get_logger().info("Publishing leaf frame")
+            self.get_logger().info("Publishing filterB frame")
 
 
 def main(args=None):

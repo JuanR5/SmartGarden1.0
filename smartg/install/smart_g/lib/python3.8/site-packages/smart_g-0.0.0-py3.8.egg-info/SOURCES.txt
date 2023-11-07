@@ -20,6 +20,7 @@ smart_g/image_filterB.py
 smart_g/image_medianf.py
 smart_g/image_publisher.py
 smart_g/image_subscriber.py
+smart_g/leaf_define.py
 smart_g/tracker.py
 test/test_copyright.py
 test/test_flake8.py
