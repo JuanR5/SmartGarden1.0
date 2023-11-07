@@ -106,14 +106,14 @@ class Tracker(Node):
         img_rts = self.br.imgmsg_to_cv2(data)
         current_frame = cv2.cvtColor(img_rts, cv2.COLOR_RGB2BGR)
 
-        """class_names = data.class_names
+        class_names = data.class_names
         if class_names:
             self.get_logger().info(f"Received class names: {', '.join(class_names)}")
             
         for bbox in self.bounding_box_list:
             self.multi_tracker.add(
                 self.generate_tracker(desired_tracker), current_frame, bbox
-            )"""
+            )
 
         success, bboxes = self.multi_tracker.update(current_frame)
 
@@ -122,7 +122,7 @@ class Tracker(Node):
             point2 = (int(bbox[0] + bbox[2]), int(bbox[1] + bbox[3]))
             cv2.rectangle(current_frame, point1, point2, self.color_list[i], 5)
 
-            """class_name = class_names[
+            lass_name = class_names[
                 i
             ]  # Access the class name based on your message structure
 
@@ -137,7 +137,7 @@ class Tracker(Node):
             color = (0, 0, 255)  # Red color
             thickness = 2
 
-            cv2.putText(current_frame, text, org, font, fontScale, color, thickness)"""
+            cv2.putText(current_frame, text, org, font, fontScale, color, thickness)
 
         tracked_image_msg = self.br.cv2_to_imgmsg(current_frame, encoding="rgb8")
 

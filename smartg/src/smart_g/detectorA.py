@@ -1,6 +1,7 @@
 import rclpy  # Python library for ROS 2
 from rclpy.node import Node  # Handles the creation of nodes
 from sensor_msgs.msg import Image  # Image is the message type
+from std_msgs.msg import String 
 from cv_bridge import CvBridge  # Package to convert between ROS and OpenCV Images
 import cv2  # OpenCV library
 import numpy as np
@@ -27,6 +28,8 @@ class DetectorA(Node):
         # Create the publisher. This publisher will publish an Image
         # to the filterA_frames topic. The queue size is 10 messages.
         self.publisher_ = self.create_publisher(Image, "detected_frames", 10)
+        self.text_publisher = self.create_publisher(String, 'text_topic', 10)
+        self.text_msg = String()
 
         # We will publish a message every 0.1 seconds
         timer_period = 0.1  # seconds
@@ -36,6 +39,7 @@ class DetectorA(Node):
 
         # Initialize the bridge object  
         self.filtered_frame = None
+        self.class_name = None
 
         self.encoding = 'rgb8'  # Initialize encoding to 'rgb8'
         
@@ -101,7 +105,7 @@ class DetectorA(Node):
 
         # Initialize an empty list to store object information
         detected_objects = []      
-        results = model(img_bgr8, stream=True)
+        results = model(img_rgb, stream=True)
         # Clear the previous frame's detected objects
         detected_objects = []
         
@@ -126,13 +130,13 @@ class DetectorA(Node):
 
                 # class name
                 cls = int(box.cls[0])
-                class_name=classNames[cls]
+                self.class_name=classNames[cls]
                 #print("Class name -->", classNames[cls])
 
                 # Append the object information to the list
                 detected_objects.append({
                     'coordinates': (x1, y1, x2, y2),
-                    'class_name': class_name,
+                    'class_name': self.class_name,
                     'confidence': confidence
                 })
                 # object details
@@ -152,6 +156,9 @@ class DetectorA(Node):
         #self.publisher_.publish(self.br.cv2_to_imgmsg(img_rts))
         #self.get_logger().info("Publishing video frame")
     def timer_callback(self):
+        
+        self.text_msg.data = self.class_name
+        self.text_publisher.publish(self.text_msg)
         
          # Check if a frame has been received from the subscriber
         if self.filtered_frame is not None:
