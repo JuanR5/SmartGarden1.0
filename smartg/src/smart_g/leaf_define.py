@@ -122,15 +122,15 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Create the node
-    image_filterB = ImageFilterB()
+    leaf_define = Leaf_define()
 
     # Spin the node so the callback function is called.
-    rclpy.spin(image_filterB)
+    rclpy.spin(leaf_define)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    image_filterB.destroy_node()
+    leaf_define.destroy_node()
 
     # Shutdown the ROS client library for Python
     rclpy.shutdown()
