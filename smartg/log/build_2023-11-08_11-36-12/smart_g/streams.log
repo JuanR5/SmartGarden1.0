@@ -1,0 +1,92 @@
+[1.288s] Invoking command in '/home/juan/ProyectoPR/SmartGarden1.0/smartg/src': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build install --record /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
+[1.455s] /home/juan/.local/lib/python3.8/site-packages/setuptools/dist.py:498: SetuptoolsDeprecationWarning: Invalid dash-separated options
+[1.456s] !!
+[1.456s] 
+[1.456s]         ********************************************************************************
+[1.456s]         Usage of dash-separated 'script-dir' will not be supported in future
+[1.456s]         versions. Please use the underscore name 'script_dir' instead.
+[1.456s] 
+[1.456s]         This deprecation is overdue, please update your project and remove deprecated
+[1.456s]         calls to avoid build errors in the future.
+[1.457s] 
+[1.457s]         See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+[1.457s]         ********************************************************************************
+[1.457s] 
+[1.457s] !!
+[1.457s]   opt = self.warn_dash_deprecation(opt, section)
+[1.619s] running egg_info
+[1.619s] creating ../build/smart_g/smart_g.egg-info
+[1.645s] writing ../build/smart_g/smart_g.egg-info/PKG-INFO
+[1.645s] writing dependency_links to ../build/smart_g/smart_g.egg-info/dependency_links.txt
+[1.645s] writing entry points to ../build/smart_g/smart_g.egg-info/entry_points.txt
+[1.646s] writing requirements to ../build/smart_g/smart_g.egg-info/requires.txt
+[1.646s] writing top-level names to ../build/smart_g/smart_g.egg-info/top_level.txt
+[1.788s] writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[1.843s] reading manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[1.844s] writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[1.845s] running build
+[1.845s] running build_py
+[1.845s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build
+[1.845s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib
+[1.846s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.846s] copying smart_g/VideoInputA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.846s] copying smart_g/image_medianf.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.846s] copying smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.846s] copying smart_g/image_filterA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.846s] copying smart_g/leaf_define.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.847s] copying smart_g/__init__.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.847s] copying smart_g/outputNode.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.847s] copying smart_g/image_colorB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.847s] copying smart_g/detectorA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.847s] /home/juan/.local/lib/python3.8/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[1.847s] !!
+[1.848s] 
+[1.848s]         ********************************************************************************
+[1.848s]         Please avoid running ``setup.py`` directly.
+[1.848s]         Instead, use pypa/build, pypa/installer or other
+[1.848s]         standards-based tools.
+[1.848s] 
+[1.848s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[1.849s]         ********************************************************************************
+[1.849s] 
+[1.849s] !!
+[1.849s]   self.initialize_options()
+[1.849s] running install
+[1.854s] running install_lib
+[1.880s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.881s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/VideoInputA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.881s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_medianf.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.881s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.881s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_filterA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.882s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/leaf_define.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.882s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/__init__.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.882s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/outputNode.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.882s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_colorB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.882s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/detectorA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.882s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/VideoInputA.py to VideoInputA.cpython-38.pyc
+[1.883s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_medianf.py to image_medianf.cpython-38.pyc
+[1.884s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/tracker.py to tracker.cpython-38.pyc
+[1.885s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_filterA.py to image_filterA.cpython-38.pyc
+[1.885s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/leaf_define.py to leaf_define.cpython-38.pyc
+[1.886s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__init__.py to __init__.cpython-38.pyc
+[1.887s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/outputNode.py to outputNode.cpython-38.pyc
+[1.887s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorB.py to image_colorB.cpython-38.pyc
+[1.888s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/detectorA.py to detectorA.cpython-38.pyc
+[1.889s] running install_data
+[1.914s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index
+[1.914s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index
+[1.914s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages
+[1.914s] copying resource/smart_g -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages
+[1.914s] copying package.xml -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/smart_g
+[1.915s] running install_egg_info
+[1.941s] Copying ../build/smart_g/smart_g.egg-info to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info
+[1.941s] running install_scripts
+[2.013s] Installing VideoInput script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.014s] Installing detector script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.014s] Installing image_filterA script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.014s] Installing image_filterSubs script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.014s] Installing leaf_define script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.015s] Installing obj_Tracker script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.015s] Installing outputNode script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.015s] writing list of installed files to '/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log'
+[2.053s] Invoked command in '/home/juan/ProyectoPR/SmartGarden1.0/smartg/src' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build install --record /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed

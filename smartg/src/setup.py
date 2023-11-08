@@ -26,6 +26,7 @@ setup(
         'image_filterSubs = smart_g.image_filterSubs:main',
         'obj_Tracker = smart_g.tracker:main',
         'leaf_define = smart_g.leaf_define:main',
+        'outputNode = smart_g.outputNode:main',
         ],
     },
 )

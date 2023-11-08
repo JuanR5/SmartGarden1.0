@@ -33,9 +33,9 @@ class VideoInputA(Node):
         # Create a VideoCapture object
     def get_video_source(self):
         root = tk.Tk()
-        root.geometry("300x300")
         root.title("Select Video Source")
 
+        # Function to handle button click
         def handle_button_click(selection):
             if selection == "webcam":
                 self.cap = cv2.VideoCapture(0)  # Webcam
@@ -51,16 +51,27 @@ class VideoInputA(Node):
             else:
                 root.destroy()
 
-        label = tk.Label(root, text="Please select the video source for publishing:")
-        label.pack()
+        label = tk.Label(root, text="Please select the video source for publishing:", font=("Arial", 18))
+        label.pack(pady=10)  # Add padding on the top and bottom
 
-        button_webcam = tk.Button(root, text="Webcam", command=lambda: handle_button_click("webcam"))
-        button_recorded_video = tk.Button(root, text="Recorded Video",
-                                          command=lambda: handle_button_click("recorded video"))
+        # Create a frame to hold the buttons
+        button_frame = tk.Frame(root)
+        button_frame.pack()
 
-        button_webcam.pack()
-        button_recorded_video.pack()
+        button_webcam = tk.Button(button_frame, text="Webcam", command=lambda: handle_button_click("webcam"), width=20, height=2, font=("Arial", 18, "bold"))
+        button_recorded_video = tk.Button(button_frame, text="Recorded Video", command=lambda: handle_button_click("recorded video"), width=20, height=2, font=("Arial", 18, "bold"))
 
+        # Add color to buttons
+        button_webcam.configure(bg='green')
+        button_recorded_video.configure(bg='orange')
+
+        button_webcam.grid(row=0, column=0, padx=10)  # Use grid for better layout control
+        button_recorded_video.grid(row=0, column=1, padx=10)
+
+        # Adjust the window size based on content
+        root.update_idletasks()
+        root.geometry('{}x{}'.format(button_frame.winfo_width() + 20, button_frame.winfo_height() + label.winfo_height() + 40))
+        
         root.mainloop()
         # Used to convert between ROS and OpenCV images
 

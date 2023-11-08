@@ -16,7 +16,7 @@ smart_g/image_colorB.py
 smart_g/image_filterA.py
 smart_g/image_medianf.py
 smart_g/leaf_define.py
-smart_g/outpuNode.py
+smart_g/outputNode.py
 smart_g/tracker.py
 test/test_copyright.py
 test/test_flake8.py
