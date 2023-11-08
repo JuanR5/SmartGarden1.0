@@ -12,14 +12,9 @@ resource/smart_g
 smart_g/VideoInputA.py
 smart_g/__init__.py
 smart_g/detectorA.py
-smart_g/image_colorA.py
 smart_g/image_colorB.py
-smart_g/image_colorC.py
 smart_g/image_filterA.py
-smart_g/image_filterB.py
 smart_g/image_medianf.py
-smart_g/image_publisher.py
-smart_g/image_subscriber.py
 smart_g/leaf_define.py
 smart_g/outpuNode.py
 smart_g/tracker.py

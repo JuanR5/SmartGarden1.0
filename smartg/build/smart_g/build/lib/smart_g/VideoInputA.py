@@ -33,7 +33,7 @@ class VideoInputA(Node):
         # Create a VideoCapture object
     def get_video_source(self):
         root = tk.Tk()
-        root.geometry("416x416")
+        root.geometry("300x300")
         root.title("Select Video Source")
 
         def handle_button_click(selection):
