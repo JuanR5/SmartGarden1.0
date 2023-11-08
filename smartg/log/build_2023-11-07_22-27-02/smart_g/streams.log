@@ -1,0 +1,100 @@
+[1.673s] Invoking command in '/home/juan/ProyectoPR/SmartGarden1.0/smartg/src': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build install --record /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
+[1.789s] /home/juan/.local/lib/python3.8/site-packages/setuptools/dist.py:498: SetuptoolsDeprecationWarning: Invalid dash-separated options
+[1.790s] !!
+[1.790s] 
+[1.790s]         ********************************************************************************
+[1.790s]         Usage of dash-separated 'script-dir' will not be supported in future
+[1.790s]         versions. Please use the underscore name 'script_dir' instead.
+[1.790s] 
+[1.790s]         This deprecation is overdue, please update your project and remove deprecated
+[1.790s]         calls to avoid build errors in the future.
+[1.790s] 
+[1.790s]         See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+[1.790s]         ********************************************************************************
+[1.791s] 
+[1.791s] !!
+[1.791s]   opt = self.warn_dash_deprecation(opt, section)
+[1.891s] running egg_info
+[1.892s] creating ../build/smart_g/smart_g.egg-info
+[1.908s] writing ../build/smart_g/smart_g.egg-info/PKG-INFO
+[1.908s] writing dependency_links to ../build/smart_g/smart_g.egg-info/dependency_links.txt
+[1.909s] writing entry points to ../build/smart_g/smart_g.egg-info/entry_points.txt
+[1.909s] writing requirements to ../build/smart_g/smart_g.egg-info/requires.txt
+[1.909s] writing top-level names to ../build/smart_g/smart_g.egg-info/top_level.txt
+[2.037s] writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[2.073s] reading manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[2.074s] writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[2.074s] running build
+[2.074s] running build_py
+[2.075s] copying smart_g/VideoInputA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.075s] copying smart_g/image_medianf.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.075s] copying smart_g/image_subscriber.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.075s] copying smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.075s] copying smart_g/image_filterA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.075s] copying smart_g/image_publisher.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/image_colorC.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/outpuNode.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/image_colorA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/image_filterB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/__init__.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/image_colorB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] copying smart_g/detectorA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[2.076s] running install
+[2.086s] /home/juan/.local/lib/python3.8/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[2.086s] !!
+[2.087s] 
+[2.087s]         ********************************************************************************
+[2.087s]         Please avoid running ``setup.py`` directly.
+[2.087s]         Instead, use pypa/build, pypa/installer or other
+[2.087s]         standards-based tools.
+[2.087s] 
+[2.087s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[2.087s]         ********************************************************************************
+[2.087s] 
+[2.087s] !!
+[2.087s]   self.initialize_options()
+[2.098s] running install_lib
+[2.114s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/VideoInputA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.114s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_medianf.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_subscriber.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_filterA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_publisher.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_colorC.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/outpuNode.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.115s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_colorA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.116s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_filterB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.116s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/__init__.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.116s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_colorB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.116s] copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/detectorA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[2.116s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/VideoInputA.py to VideoInputA.cpython-38.pyc
+[2.116s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_medianf.py to image_medianf.cpython-38.pyc
+[2.116s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_subscriber.py to image_subscriber.cpython-38.pyc
+[2.117s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/tracker.py to tracker.cpython-38.pyc
+[2.117s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_filterA.py to image_filterA.cpython-38.pyc
+[2.118s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_publisher.py to image_publisher.cpython-38.pyc
+[2.118s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorC.py to image_colorC.cpython-38.pyc
+[2.118s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/outpuNode.py to outpuNode.cpython-38.pyc
+[2.119s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorA.py to image_colorA.cpython-38.pyc
+[2.119s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_filterB.py to image_filterB.cpython-38.pyc
+[2.120s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__init__.py to __init__.cpython-38.pyc
+[2.120s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorB.py to image_colorB.cpython-38.pyc
+[2.120s] byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/detectorA.py to detectorA.cpython-38.pyc
+[2.121s] running install_data
+[2.137s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index
+[2.137s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index
+[2.137s] creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages
+[2.137s] copying resource/smart_g -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages
+[2.138s] copying package.xml -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/smart_g
+[2.138s] running install_egg_info
+[2.154s] Copying ../build/smart_g/smart_g.egg-info to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info
+[2.154s] running install_scripts
+[2.199s] Installing VideoInput script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.216s] Installing detector script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.216s] Installing image_filterA script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.216s] Installing image_filterB script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.216s] Installing image_filterSubs script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.216s] Installing leaf_define script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.217s] Installing obj_Tracker script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[2.217s] writing list of installed files to '/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log'
+[2.247s] Invoked command in '/home/juan/ProyectoPR/SmartGarden1.0/smartg/src' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build install --record /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
