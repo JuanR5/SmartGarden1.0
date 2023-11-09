@@ -66,12 +66,7 @@ class Leaf_define(Node):
                     'Potato healthy', 'Strawberry Leaf scorch', 'Strawberry healthy', 'Tomato Bacterial spot', 'Tomato Early blight',
                     'Tomato Late blight', 'Tomato Leaf Mold', 'Tomato Septoria leaf spot', 'Tomato Spider mites', 'Tomato Target Spot',
                     'Tomato Yellow Leaf Curl Virus', 'Tomato mosaic virus', 'Tomato healthy']
-
-        # Set the font properties for the text
-        font = cv2.FONT_HERSHEY_TRIPLEX 
-        font_scale = 0.4  # Adjust the font size (you can change this value)
-        font_color = (0, 0, 0)  # Red color
-        font_thickness = 1 # Adjust the font thickness (you can change this value)
+        
         # Preprocess the frame (resize to 150x150 and convert to array)
         frame = cv2.resize(frame, (150, 150))
         frame = img_to_array(frame)
@@ -80,16 +75,34 @@ class Leaf_define(Node):
         # Make a prediction using the model
         prediction = leaf_disease_model.predict(np.expand_dims(frame, axis=0))
 
-        # Get the predicted class label and confidence
-        predicted_class = label_names[np.argmax(prediction)]
+        print(f"{label_names[np.argmax(prediction)]} {prediction[0][np.argmax(prediction)]*100}%")
+        predicted_label = f"{label_names[np.argmax(prediction)]}" # Replace this with your predicted label
         confidence = prediction[0][np.argmax(prediction)] * 100
 
-        # Add the text to the white background
-        label_text = f"{predicted_class} ({confidence:.2f}%)"
-        cv2.putText(frame, label_text, (10, 30), font, font_scale, font_color, font_thickness)
+        # Load and preprocess the input image (replace this with your own image loading code)
+        input_image = frame
+        input_image = cv2.resize(input_image, (400, 400))  # Resize to a suitable size
+
+        # Create a blank image to display the label
+        label_image = np.zeros((100, 400, 3), dtype=np.uint8)
+        label_image.fill(255)  # White background
+
+        # Add text to the label image
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 0.4
+        font_color = (0, 255, 0)  # Black color
+        font_thickness = 1
+        text = f"{predicted_label} ({confidence:.2f}%)"
+        text_size = cv2.getTextSize(text, font, font_scale, font_thickness)[0]
+        text_x = (label_image.shape[1] - text_size[0]) // 2
+        text_y = (label_image.shape[0] + text_size[1]) // 2
+        cv2.putText(label_image, text, (text_x, text_y), font, font_scale, font_color, font_thickness)
+
+        # Create a composite image by stacking the input image and label image vertically
+        composite_image = np.vstack((input_image, label_image))
 
         # Display the frame with the label
-        self.filtered_frame = frame
+        self.filtered_frame = composite_image
         
         #cv2.imshow('Leaf Disease Classification', frame)
         cv2.waitKey(1)
@@ -109,7 +122,7 @@ class Leaf_define(Node):
                 upscaled_frame = cv2.resize(self.filtered_frame, (500,500), interpolation=cv2.INTER_LINEAR)
 
             # Convert to 8-bit RGB (rgb8) format
-                filtered_frame_rgb8 = (upscaled_frame * 255).astype(np.uint8)
+                filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
                 self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='bgr8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
