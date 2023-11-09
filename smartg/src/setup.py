@@ -22,11 +22,11 @@ setup(
         'console_scripts': [
         'VideoInput = smart_g.VideoInputA:main',
         'image_filterA = smart_g.image_filterA:main',
-        'image_filterB = smart_g.image_filterB:main',
         'detector = smart_g.detectorA:main',
         'image_filterSubs = smart_g.image_filterSubs:main',
         'obj_Tracker = smart_g.tracker:main',
         'leaf_define = smart_g.leaf_define:main',
+        'outputNode = smart_g.outputNode:main',
         ],
     },
 )

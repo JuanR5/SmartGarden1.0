@@ -8,22 +8,11 @@ import numpy as np
 import random  # Use the random module to generate random colors
 from random import randint  # Handles the creation of random integers
 
-harvest_times = {
-    
-    "freshunripe": 3,
-    "unripe": 2,
-    "freshripe": 1,
-    "ripe": 0,
-    "overripe": -1,
-    "rotten": -2,    
-}
-
-
-class Tracker(Node):
+class OutputNode(Node):
    
     def __init__(self):
         
-        super().__init__("obj_tracker")
+        super().__init__("outputNode")
         
         self.class_subscription = self.create_subscription(
             String, 'class_topic', self.class_callback, 10)
@@ -102,15 +91,15 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Create the node
-    obj_tracker = Tracker()
+    outputNode = OutputNode()
 
     # Spin the node so the callback function is called.
-    rclpy.spin(obj_tracker)
+    rclpy.spin(outputNode)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    obj_tracker.destroy_node()
+    outputNode.destroy_node()
 
     # Shutdown the ROS client library for Python
     rclpy.shutdown()
@@ -118,3 +107,80 @@ def main(args=None):
 
 if __name__ == "__main__":
     main()
+
+
+
+
+#####################################################################################
+
+import tkinter as tk
+import cv2
+
+class VideoApp(tk.Tk):
+
+    def __init__(self):
+        super().__init__()
+        self.title("Video Selection")
+
+        # Create video frames
+        self.video_frame1 = tk.Frame(self)
+        self.video_frame1.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self.video_frame2 = tk.Frame(self)
+        self.video_frame2.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+        # Create video labels
+        self.video_label1 = tk.Label(self.video_frame1, width=640, height=480)
+        self.video_label1.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self.video_label2 = tk.Label(self.video_frame2, width=640, height=480)
+        self.video_label2.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+        # Create video capture objects
+        self.cap1 = cv2.VideoCapture(0)
+        self.cap2 = cv2.VideoCapture(1)
+
+        # Create switch button
+        self.switch_button = tk.Button(self, text="Switch Video", command=self.switch_video)
+        self.switch_button.pack(side=tk.BOTTOM)
+
+        # Create text message label
+        self.text_label = tk.Label(self, text="Output Message", font=("Arial", 12))
+        self.text_label.pack(side=tk.BOTTOM)
+
+        # Start video streaming
+        self.show_video1()
+
+    def show_video1(self):
+        while True:
+            ret, frame = self.cap1.read()
+            if ret:
+                cv2.imshow("Video Frame 1", frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+        self.cap1.release()
+        cv2.destroyAllWindows()
+
+    def show_video2(self):
+        while True:
+            ret, frame = self.cap2.read()
+            if ret:
+                cv2.imshow("Video Frame 2", frame)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+        self.cap2.release()
+        cv2.destroyAllWindows()
+
+    def switch_video(self):
+        if self.video_frame1.winfo_ismapped():
+            self.video_frame1.pack_forget()
+            self.video_frame2.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+            self.show_video2()
+            self.switch_button.configure(text="Switch to Video 1")
+        else:
+            self.video_frame2.pack_forget()
+            self.video_frame1.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+            self.show_video1()
+            self.switch_button.configure(text="Switch to Video 2")
+
+if __name__ == "__main__":
+    app = VideoApp()
+    app.mainloop()
