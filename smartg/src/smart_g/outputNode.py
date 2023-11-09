@@ -1,186 +1,113 @@
-import rclpy  # Python library for ROS 2
-from rclpy.node import Node  # Handles the creation of nodes
-from sensor_msgs.msg import Image  # Image is the message type
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import Image
 from std_msgs.msg import String
-from cv_bridge import CvBridge  # Package to convert between ROS and OpenCV Images
-import cv2  # OpenCV library
+from cv_bridge import CvBridge
+import cv2
+import tkinter as tk
+from PIL import Image as PILImage
+from PIL import ImageTk
 import numpy as np
-import random  # Use the random module to generate random colors
-from random import randint  # Handles the creation of random integers
+import time
 
 class OutputNode(Node):
-   
+
     def __init__(self):
-        
+
         super().__init__("outputNode")
         
-        self.class_subscription = self.create_subscription(
-            String, 'class_topic', self.class_callback, 10)
+        self.publisher_ = self.create_publisher(Image, "final_frames", 10)
 
-        self.subscription = self.create_subscription(
-            Image, "detected_frames", self.listener_callbackB, 10)
-        
-        
-        self.subscription
-
-        self.publisher_ = self.create_publisher(Image, "tracked_obj", 10)
-        self.time_publisher = self.create_publisher(String, 'time_topic', 10)
-        self.time_msg = String()
-
-        # We will publish a message every 0.1 seconds
-        timer_period = 0.1  # seconds
-
-        # Create the timer
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-
-        self.class_name = None
-        self.color = (0,0,0) 
-
-        self.filtered_frame = np.empty(shape=(416, 416, 3), dtype=np.uint8)
-
-        # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
-  
-    def class_callback(self, msg):
-        # Callback for class topic
-        self.class_name = msg.data
+        self.encoding = 'rgb8'
+        self.filtered_frame = None
+        self.selected_topic = "tracked_obj"  # Default topic
+
+        self.subscription_dict = {}
+        self.switching = False  # Flag to prevent rapid switching
+        self.switch_delay = 2  # Delay in seconds
+
+        self.init_gui()
+        self.start_video_subscription("tracked_obj")
+        self.start_video_subscription("leaf_frames")
+        self.video_subscription = self.subscription_dict[self.selected_topic]
+        self.text_subscription = self.create_subscription(String, 'time_topic', self.text_callback, 10)
+
+    def init_gui(self):
+        self.root = tk.Tk()
+        self.root.title("ROS Video Viewer")
+
+        self.video_frame = tk.Label(self.root)
+        self.video_frame.pack()
+
+        self.text_frame = tk.Label(self.root, text="Result Message Here")
+        self.text_frame.pack()
+
+        self.switch_button = tk.Button(self.root, text="Switch Video", command=self.switch_video)
+        self.switch_button.pack()
+
+    def update_video_frame(self, frame):
+        img_tk = self.cv2_to_image_tk(frame)
+        self.video_frame.config(image=img_tk)
+        self.video_frame.img = img_tk
+        self.root.update()
+
+    def text_callback(self, msg):
+        self.text_frame.config(text=msg.data)
+        self.root.update()
+
+    def start_video_subscription(self, topic):
+        subscription = self.create_subscription(Image, topic, self.video_callback, 10)
+        self.subscription_dict[topic] = subscription
+
+    def video_callback(self, msg):
+        img = self.br.imgmsg_to_cv2(msg, desired_encoding=self.encoding)
+        self.update_video_frame(img)
+        self.publisher_.publish(msg)
+
+    def switch_video(self):
+        if not self.switching:
+            self.switching = True
+            new_topic = "leaf_frames" if self.selected_topic == "tracked_obj" else "tracked_obj"
+
+            # Unsubscribe from the current topic
+            self.destroy_subscription(self.video_subscription)
+
+            # Add a delay to prevent rapid switching
+            time.sleep(self.switch_delay)
+
+            # Subscribe to the new topic
+            self.selected_topic = new_topic
+            self.video_subscription = self.subscription_dict[self.selected_topic]
+            self.switching = False
             
-    def process_frame(self, current_frame):
-        
-        optimal_harvest_time = harvest_times.get(self.class_name, "N/A")
-        self.time_msg.data = f"Optimal Harvest Time: {optimal_harvest_time} weeks"
-        org = (50, 50)
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        fontScale = 1
-        color = (0, 0, 255)  # Red color
-        thickness = 2
-        cv2.putText(current_frame, self.time_msg.data, org, font, fontScale, color, thickness)
+    def cv2_to_image_tk(self, cv_image):
+        bridge = CvBridge()
+        image_msg = bridge.cv2_to_imgmsg(cv_image, encoding="bgr8")
 
-    def listener_callbackB(self, data):
-        
-        self.get_logger().info("Receiving video frame")
+        # Convert the ROS 2 Image message to a format suitable for Tkinter
+        image_data = np.frombuffer(image_msg.data, dtype=np.uint8)
+        image = np.reshape(image_data, (image_msg.height, image_msg.width, 3))
 
-        # Convert ROS Image message to OpenCV image
-        img_rts = self.br.imgmsg_to_cv2(data)
-        current_frame = cv2.cvtColor(img_rts, cv2.COLOR_BGR2RGB)
-        
-        self.process_frame(current_frame)
-        # Publish the processed frame
-                    
-        self.filtered_frame = current_frame
-        # Store the filtered frame
+        # Convert the NumPy image to a PIL Image
+        pil_image = PILImage.fromarray(image)
 
-        cv2.waitKey(1)
-        
-    def timer_callback(self):
-              
-        self.time_publisher.publish(self.time_msg)
-        
-        # Check if a frame has been received from the subscriber
-        if self.filtered_frame is not None:
-            # Publish the filtered frame.
-            # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
-            self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding="bgr8"))
+        # Convert the PIL Image to a Tkinter-compatible format
+        image_tk = ImageTk.PhotoImage(pil_image)
 
-        # Display the message on the console
-        self.get_logger().info("Publishing tracked obj")
-
-
+        return image_tk
+    
 def main(args=None):
-    # Initialize the rclpy library
     rclpy.init(args=args)
-
-    # Create the node
     outputNode = OutputNode()
 
-    # Spin the node so the callback function is called.
-    rclpy.spin(outputNode)
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    outputNode.destroy_node()
-
-    # Shutdown the ROS client library for Python
-    rclpy.shutdown()
-
+    try:
+        rclpy.spin(outputNode)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        outputNode.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == "__main__":
     main()
-
-
-
-
-#####################################################################################
-
-import tkinter as tk
-import cv2
-
-class VideoApp(tk.Tk):
-
-    def __init__(self):
-        super().__init__()
-        self.title("Video Selection")
-
-        # Create video frames
-        self.video_frame1 = tk.Frame(self)
-        self.video_frame1.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        self.video_frame2 = tk.Frame(self)
-        self.video_frame2.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-
-        # Create video labels
-        self.video_label1 = tk.Label(self.video_frame1, width=640, height=480)
-        self.video_label1.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-        self.video_label2 = tk.Label(self.video_frame2, width=640, height=480)
-        self.video_label2.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-
-        # Create video capture objects
-        self.cap1 = cv2.VideoCapture(0)
-        self.cap2 = cv2.VideoCapture(1)
-
-        # Create switch button
-        self.switch_button = tk.Button(self, text="Switch Video", command=self.switch_video)
-        self.switch_button.pack(side=tk.BOTTOM)
-
-        # Create text message label
-        self.text_label = tk.Label(self, text="Output Message", font=("Arial", 12))
-        self.text_label.pack(side=tk.BOTTOM)
-
-        # Start video streaming
-        self.show_video1()
-
-    def show_video1(self):
-        while True:
-            ret, frame = self.cap1.read()
-            if ret:
-                cv2.imshow("Video Frame 1", frame)
-                if cv2.waitKey(1) & 0xFF == ord('q'):
-                    break
-        self.cap1.release()
-        cv2.destroyAllWindows()
-
-    def show_video2(self):
-        while True:
-            ret, frame = self.cap2.read()
-            if ret:
-                cv2.imshow("Video Frame 2", frame)
-                if cv2.waitKey(1) & 0xFF == ord('q'):
-                    break
-        self.cap2.release()
-        cv2.destroyAllWindows()
-
-    def switch_video(self):
-        if self.video_frame1.winfo_ismapped():
-            self.video_frame1.pack_forget()
-            self.video_frame2.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-            self.show_video2()
-            self.switch_button.configure(text="Switch to Video 1")
-        else:
-            self.video_frame2.pack_forget()
-            self.video_frame1.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-            self.show_video1()
-            self.switch_button.configure(text="Switch to Video 2")
-
-if __name__ == "__main__":
-    app = VideoApp()
-    app.mainloop()
