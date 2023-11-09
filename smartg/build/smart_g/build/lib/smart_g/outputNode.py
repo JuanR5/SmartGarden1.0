@@ -32,6 +32,7 @@ class OutputNode(Node):
         self.start_video_subscription("leaf_frames")
         self.video_subscription = self.subscription_dict[self.selected_topic]
         self.text_subscription = self.create_subscription(String, 'time_topic', self.text_callback, 10)
+        #self.start_label_subscription() #Label subscription 
 
     def init_gui(self):
         self.root = tk.Tk()
@@ -42,10 +43,24 @@ class OutputNode(Node):
 
         self.text_frame = tk.Label(self.root, text="Result Message Here")
         self.text_frame.pack()
+        self.text_frame.config(font=("Arial", 15))
+        
+        self.label2 = tk.Label(self.root, text="")
+        self.label2.pack()
+        self.label2.config(font=("Arial", 15))
 
         self.switch_button = tk.Button(self.root, text="Switch Video", command=self.switch_video)
         self.switch_button.pack()
-
+        # Set the size and color of the button
+        self.switch_button.config(height=10, width=10, background="#ff8c00", foreground="black")
+        # Set the font of the button text
+        self.switch_button.config(font=("Arial", 10, "bold"))
+    
+    def start_label_subscription(self):
+        if "label_topic" not in self.subscription_dict:
+            subscription = self.create_subscription(String, "label_topic", self.label_callback, 10)
+            self.subscription_dict["label_topic"] = subscription
+            
     def update_video_frame(self, frame):
         img_tk = self.cv2_to_image_tk(frame)
         self.video_frame.config(image=img_tk)
@@ -54,7 +69,12 @@ class OutputNode(Node):
 
     def text_callback(self, msg):
         self.text_frame.config(text=msg.data)
-        self.root.update()
+        self.root.update()  
+        
+    def label_callback(self, msg):
+        if self.selected_topic == "leaf_frames":
+            self.label2.config(text=msg.data)
+            self.root.update()
 
     def start_video_subscription(self, topic):
         subscription = self.create_subscription(Image, topic, self.video_callback, 10)
@@ -70,13 +90,15 @@ class OutputNode(Node):
             self.switching = True
             new_topic = "leaf_frames" if self.selected_topic == "tracked_obj" else "tracked_obj"
 
-            # Unsubscribe from the current topic
-            self.destroy_subscription(self.video_subscription)
-
+            # First subscribe to the new topic
+            self.start_label_subscription()
             # Add a delay to prevent rapid switching
-            time.sleep(self.switch_delay)
+            time.sleep(self.switch_delay)          
+            self.start_video_subscription(new_topic)
 
-            # Subscribe to the new topic
+            # Then unsubscribe from the current topic
+            self.destroy_subscription(self.video_subscription)
+            # Finally, update the selected topic variable
             self.selected_topic = new_topic
             self.video_subscription = self.subscription_dict[self.selected_topic]
             self.switching = False

@@ -65,7 +65,7 @@ class Tracker(Node):
         fontScale = 1
         color = (0, 0, 255)  # Red color
         thickness = 2
-        cv2.putText(current_frame, self.time_msg.data, org, font, fontScale, color, thickness)
+        #cv2.putText(current_frame, self.time_msg.data, org, font, fontScale, color, thickness)
 
     def listener_callbackB(self, data):
         
