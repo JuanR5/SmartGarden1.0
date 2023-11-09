@@ -1,0 +1,30 @@
+[1.249s] Invoking command in '/home/sofia/Proyecto_final/SmartGarden1.0/smartg/src': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/build install --record /home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
+[1.474s] running egg_info
+[1.475s] writing ../build/smart_g/smart_g.egg-info/PKG-INFO
+[1.475s] writing dependency_links to ../build/smart_g/smart_g.egg-info/dependency_links.txt
+[1.475s] writing entry points to ../build/smart_g/smart_g.egg-info/entry_points.txt
+[1.475s] writing requirements to ../build/smart_g/smart_g.egg-info/requires.txt
+[1.475s] writing top-level names to ../build/smart_g/smart_g.egg-info/top_level.txt
+[1.504s] reading manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[1.504s] writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+[1.504s] running build
+[1.504s] running build_py
+[1.505s] copying smart_g/leaf_define.py -> /home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+[1.505s] running install
+[1.505s] running install_lib
+[1.506s] copying /home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/leaf_define.py -> /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+[1.507s] byte-compiling /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/leaf_define.py to leaf_define.cpython-38.pyc
+[1.508s] running install_data
+[1.509s] running install_egg_info
+[1.510s] removing '/home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info' (and everything under it)
+[1.510s] Copying ../build/smart_g/smart_g.egg-info to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info
+[1.511s] running install_scripts
+[1.525s] Installing VideoInput script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.525s] Installing detector script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.525s] Installing image_filterA script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.525s] Installing image_filterSubs script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.525s] Installing leaf_define script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.525s] Installing obj_Tracker script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.525s] Installing outputNode script to /home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+[1.526s] writing list of installed files to '/home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/install.log'
+[1.543s] Invoked command in '/home/sofia/Proyecto_final/SmartGarden1.0/smartg/src' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/prefix_override:/home/sofia/Proyecto_final/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/smart_g build --build-base /home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/build install --record /home/sofia/Proyecto_final/SmartGarden1.0/smartg/build/smart_g/install.log --install-scripts $base/lib/smart_g --single-version-externally-managed
