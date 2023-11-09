@@ -1,6 +1,7 @@
 import rclpy  # Python library for ROS 2
 from rclpy.node import Node  # Handles the creation of nodes
 from sensor_msgs.msg import Image  # Image is the message type
+from std_msgs.msg import String
 from cv_bridge import CvBridge  # Package to convert between ROS and OpenCV Images
 import cv2  # OpenCV library
 import numpy as np
@@ -31,7 +32,8 @@ class Leaf_define(Node):
 ###        # Create the publisher. This publisher will publish an Image
         # to the filterA_frames topic. The queue size is 10 messages.
         self.publisher_ = self.create_publisher(Image, "leaf_frames", 10)
-
+        self.label_publisher = self.create_publisher(String, 'label_topic', 10)
+        self.label_msg = String()
         # We will publish a message every 0.1 seconds
         timer_period = 0.1  # seconds
 
@@ -72,40 +74,33 @@ class Leaf_define(Node):
         frame = cv2.resize(frame, (150, 150))
         frame = img_to_array(frame)
         frame = preprocess_input(frame)
-
         # Make a prediction using the model
         prediction = leaf_disease_model.predict(np.expand_dims(frame, axis=0))
 
-        print(f"{label_names[np.argmax(prediction)]} {prediction[0][np.argmax(prediction)]*100}%")
+        #print(f"{label_names[np.argmax(prediction)]} {prediction[0][np.argmax(prediction)]*100}%")
         predicted_label = f"{label_names[np.argmax(prediction)]}" # Replace this with your predicted label
         confidence = prediction[0][np.argmax(prediction)] * 100
-
-        # Load and preprocess the input image (replace this with your own image loading code)
-        input_image = frame
-        input_image = cv2.resize(input_image, (416, 416))  # Resize to a suitable size
-
+        frame = cv2.resize(frame, (430, 640))  # Resize to a suitable size
         # Create a blank image to display the label
-        label_image = np.zeros((100, 416, 3), dtype=np.uint8)
+        label_image = np.zeros((50,640, 3), dtype=np.uint8)
         label_image.fill(255)  # White background
-
         # Add text to the label image
-        font = cv2.FONT_HERSHEY_COMPLEX
+        font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 0.6
         font_color = (0, 0, 0)  # Black color
-        font_thickness = 2
+        font_thickness = 1
+        
         text = f"{predicted_label} ({confidence:.2f}%)"
         text_size = cv2.getTextSize(text, font, font_scale, font_thickness)[0]
         text_x = (label_image.shape[1] - text_size[0]) // 2
         text_y = (label_image.shape[0] + text_size[1]) // 2
         cv2.putText(label_image, text, (text_x, text_y), font, font_scale, font_color, font_thickness)
 
-        # Create a composite image by stacking the input image and label image vertically
-        #composite_image = np.vstack((input_image, label_image))
-
         # Display the frame with the label
-        self.filtered_frame = input_image
+        self.filtered_frame = frame 
         self.label = label_image
         #cv2.imshow('Leaf Disease Classification', frame)
+        self.label_msg.data = text
         cv2.waitKey(1)     
 
     def timer_callback(self):
@@ -113,10 +108,11 @@ class Leaf_define(Node):
             Callback function.
             This function gets called every 0.1 seconds.
             """
+            self.label_publisher.publish(self.label_msg)
             # Check if a frame has been received from the subscriber
             if self.filtered_frame is not None:
             # Publish the filtered frame.
-                upscaled_frame = cv2.resize(self.filtered_frame, (416,416), interpolation=cv2.INTER_LINEAR)
+                upscaled_frame = cv2.resize(self.filtered_frame, (640,430), interpolation=cv2.INTER_LINEAR)
 
             # Convert to 8-bit RGB (rgb8) format
                 filtered_frame_rgb8 = (upscaled_frame* 255).astype(np.uint8)
