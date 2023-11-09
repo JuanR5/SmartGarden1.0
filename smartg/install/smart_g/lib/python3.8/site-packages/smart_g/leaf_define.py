@@ -106,10 +106,10 @@ class Leaf_define(Node):
             # Check if a frame has been received from the subscriber
             if self.filtered_frame is not None:
             # Publish the filtered frame.
+                upscaled_frame = cv2.resize(self.filtered_frame, (400, 400), interpolation=cv2.INTER_LINEAR)
+
             # Convert to 8-bit RGB (rgb8) format
-                filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
-            # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message
-                #self.publisher_.publish(self.br.cv2_to_imgmsg(self.filtered_frame, encoding='rgb8')) ## if gray scale encoding = mono8
+                filtered_frame_rgb8 = (upscaled_frame * 255).astype(np.uint8)
                 self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='bgr8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
