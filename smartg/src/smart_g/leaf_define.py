@@ -40,7 +40,8 @@ class Leaf_define(Node):
 
         self.encoding = 'rgb8'  # Initialize encoding to 'rgb8'
         # Initialize the bridge object  
-        self.filtered_frame = None          
+        self.filtered_frame = None    
+        self.label = None     
         
         # Used to convert between ROS and OpenCV images
         self.br = CvBridge()
@@ -81,17 +82,17 @@ class Leaf_define(Node):
 
         # Load and preprocess the input image (replace this with your own image loading code)
         input_image = frame
-        input_image = cv2.resize(input_image, (400, 400))  # Resize to a suitable size
+        input_image = cv2.resize(input_image, (416, 416))  # Resize to a suitable size
 
         # Create a blank image to display the label
-        label_image = np.zeros((100, 400, 3), dtype=np.uint8)
+        label_image = np.zeros((100, 416, 3), dtype=np.uint8)
         label_image.fill(255)  # White background
 
         # Add text to the label image
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 0.4
-        font_color = (0, 255, 0)  # Black color
-        font_thickness = 1
+        font = cv2.FONT_HERSHEY_COMPLEX
+        font_scale = 0.6
+        font_color = (0, 0, 0)  # Black color
+        font_thickness = 2
         text = f"{predicted_label} ({confidence:.2f}%)"
         text_size = cv2.getTextSize(text, font, font_scale, font_thickness)[0]
         text_x = (label_image.shape[1] - text_size[0]) // 2
@@ -99,17 +100,13 @@ class Leaf_define(Node):
         cv2.putText(label_image, text, (text_x, text_y), font, font_scale, font_color, font_thickness)
 
         # Create a composite image by stacking the input image and label image vertically
-        composite_image = np.vstack((input_image, label_image))
+        #composite_image = np.vstack((input_image, label_image))
 
         # Display the frame with the label
-        self.filtered_frame = composite_image
-        
+        self.filtered_frame = input_image
+        self.label = label_image
         #cv2.imshow('Leaf Disease Classification', frame)
-        cv2.waitKey(1)
-
-        # Exit the loop if the 'q' key is pressed
-        #if cv2.waitKey(1) & 0xFF == ord('q'):
-            #cv2.destroyAllWindows()     
+        cv2.waitKey(1)     
 
     def timer_callback(self):
             """
@@ -119,11 +116,12 @@ class Leaf_define(Node):
             # Check if a frame has been received from the subscriber
             if self.filtered_frame is not None:
             # Publish the filtered frame.
-                upscaled_frame = cv2.resize(self.filtered_frame, (500,500), interpolation=cv2.INTER_LINEAR)
+                upscaled_frame = cv2.resize(self.filtered_frame, (416,416), interpolation=cv2.INTER_LINEAR)
 
             # Convert to 8-bit RGB (rgb8) format
-                filtered_frame_rgb8 = (self.filtered_frame * 255).astype(np.uint8)
-                self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='bgr8'))
+                filtered_frame_rgb8 = (upscaled_frame* 255).astype(np.uint8)
+                composite_image = np.vstack((filtered_frame_rgb8, self.label))
+                self.publisher_.publish(self.br.cv2_to_imgmsg(composite_image, encoding='bgr8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf frame")
 
