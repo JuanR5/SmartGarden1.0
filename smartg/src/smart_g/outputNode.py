@@ -31,7 +31,8 @@ class OutputNode(Node):
         self.start_video_subscription("leaf_frames")
         
         self.text_subscription = self.create_subscription(String, 'time_topic', self.text_callback, 10)
-        self.label_subscription = None 
+        self.label_subscription = self.create_subscription(String, 'label_topic', self.label_callback, 10)
+
 
     def init_gui(self):
         self.root = tk.Tk()
@@ -64,8 +65,9 @@ class OutputNode(Node):
         self.root.update()
 
     def text_callback(self, msg):
-        self.text_frame.config(text=msg.data)
-        self.root.update()  
+        if self.selected_topic == "tracked_obj":
+            self.text_frame.config(text=msg.data)
+            self.root.update()  
         
     def label_callback(self, msg):
         if self.selected_topic == "leaf_frames":
