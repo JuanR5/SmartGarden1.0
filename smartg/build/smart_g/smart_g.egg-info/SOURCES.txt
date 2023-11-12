@@ -1,3 +1,4 @@
+inicio.launch.py
 package.xml
 setup.cfg
 setup.py
@@ -9,9 +10,9 @@ setup.py
 ../build/smart_g/smart_g.egg-info/top_level.txt
 ../build/smart_g/smart_g.egg-info/zip-safe
 resource/smart_g
-smart_g/VideoInputA.py
+smart_g/VideoInput.py
 smart_g/__init__.py
-smart_g/detectorA.py
+smart_g/detector.py
 smart_g/image_colorB.py
 smart_g/image_filterA.py
 smart_g/image_medianf.py

@@ -23,7 +23,7 @@ class Tracker(Node):
    
     def __init__(self):
         
-        super().__init__("obj_tracker")
+        super().__init__("obj_Tracker")
         
         self.class_subscription = self.create_subscription(
             String, 'class_topic', self.class_callback, 10)
@@ -102,15 +102,15 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Create the node
-    obj_tracker = Tracker()
+    obj_Tracker = Tracker()
 
     # Spin the node so the callback function is called.
-    rclpy.spin(obj_tracker)
+    rclpy.spin(obj_Tracker)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    obj_tracker.destroy_node()
+    obj_Tracker.destroy_node()
 
     # Shutdown the ROS client library for Python
     rclpy.shutdown()

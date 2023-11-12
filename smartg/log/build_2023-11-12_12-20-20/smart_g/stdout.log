@@ -1,0 +1,64 @@
+running egg_info
+creating ../build/smart_g/smart_g.egg-info
+writing ../build/smart_g/smart_g.egg-info/PKG-INFO
+writing dependency_links to ../build/smart_g/smart_g.egg-info/dependency_links.txt
+writing entry points to ../build/smart_g/smart_g.egg-info/entry_points.txt
+writing requirements to ../build/smart_g/smart_g.egg-info/requires.txt
+writing top-level names to ../build/smart_g/smart_g.egg-info/top_level.txt
+writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+reading manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+writing manifest file '../build/smart_g/smart_g.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/image_medianf.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/detector.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/image_filterA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/leaf_define.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/__init__.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/VideoInput.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/outputNode.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+copying smart_g/image_colorB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g
+running install
+running install_lib
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_medianf.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/detector.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/tracker.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_filterA.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/leaf_define.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/__init__.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/VideoInput.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/outputNode.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+copying /home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/build/lib/smart_g/image_colorB.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_medianf.py to image_medianf.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/detector.py to detector.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/tracker.py to tracker.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_filterA.py to image_filterA.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/leaf_define.py to leaf_define.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/VideoInput.py to VideoInput.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/outputNode.py to outputNode.cpython-38.pyc
+byte-compiling /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g/image_colorB.py to image_colorB.cpython-38.pyc
+running install_data
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages
+copying resource/smart_g -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/ament_index/resource_index/packages
+copying package.xml -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/smart_g
+creating /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/smart_g/launch
+copying inicio.py -> /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/share/smart_g/launch
+running install_egg_info
+Copying ../build/smart_g/smart_g.egg-info to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/python3.8/site-packages/smart_g-0.0.0-py3.8.egg-info
+running install_scripts
+Installing VideoInput script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+Installing detector script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+Installing image_filterA script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+Installing image_filterSubs script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+Installing leaf_define script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+Installing obj_Tracker script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+Installing outputNode script to /home/juan/ProyectoPR/SmartGarden1.0/smartg/install/smart_g/lib/smart_g
+writing list of installed files to '/home/juan/ProyectoPR/SmartGarden1.0/smartg/build/smart_g/install.log'
