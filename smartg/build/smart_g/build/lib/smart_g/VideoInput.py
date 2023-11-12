@@ -5,6 +5,7 @@ from cv_bridge import CvBridge  # Package to convert between ROS and OpenCV Imag
 import cv2  # OpenCV library
 import sys
 import tkinter as tk
+import tkinter.simpledialog
 
 class VideoInput(Node):
     """
@@ -40,8 +41,13 @@ class VideoInput(Node):
             if selection == "webcam":
                 self.cap = cv2.VideoCapture(0)  # Webcam
             elif selection == "recorded video":
-                video_path = input('Enter the path to the pre-recorded video file (e.g., "your_video.avi"): ')
-                self.cap = cv2.VideoCapture(video_path)
+                
+                video_path = tkinter.simpledialog.askstring("Recorded Video", "Enter the path to the pre-recorded video file (e.g., 'your_video.avi'):")
+                self.cap = cv2.VideoCapture(video_path) if video_path else None
+                
+                # video_path = input('Enter the path to the pre-recorded video file (e.g., "your_video.avi"): ')
+                # self.cap = cv2.VideoCapture(video_path)
+                
             else:
                 self.get_logger().error('Invalid input. Please write again.')
                 sys.exit(0)  # You may want to handle this case accordingly
