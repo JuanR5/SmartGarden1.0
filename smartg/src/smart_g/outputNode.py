@@ -25,13 +25,14 @@ class OutputNode(Node):
         self.switch_delay = 1 # Delay in seconds
 
         self.video_subscription=None
+        self.text_subscription=None
 
         self.init_gui()
         self.start_video_subscription("tracked_obj")
         self.start_video_subscription("leaf_frames")
         
-        self.text_subscription = self.create_subscription(String, 'time_topic', self.text_callback, 10)
-        self.label_subscription = self.create_subscription(String, 'label_topic', self.label_callback, 10)
+        # self.text_subscription = self.create_subscription(String, 'time_topic', self.text_callback, 10)
+        # self.label_subscription = self.create_subscription(String, 'label_topic', self.label_callback, 10)
 
 
     def init_gui(self):
@@ -50,13 +51,6 @@ class OutputNode(Node):
         self.switch_button = tk.Button(self.root, text="Switch Video", command=self.switch_video)
         self.switch_button.pack()
         self.switch_button.config(height=2, width=20, bg = 'green', foreground="black", font=("Arial", 18, "bold"))
-        
-        # Update and resize the GUI to fit its elements
-        """self.root.update_idletasks()
-        self.root.geometry('{}x{}'.format(
-            self.switch_button.winfo_width() + 20, 
-            self.switch_button.winfo_height() + self.label2.winfo_height() + 
-            self.text_frame.winfo_height() + self.video_frame.winfo_height() + 40) ) """
             
     def update_video_frame(self, frame):
         img_tk = self.cv2_to_image_tk(frame)
@@ -64,20 +58,29 @@ class OutputNode(Node):
         self.video_frame.img = img_tk
         self.root.update()
 
-    def text_callback(self, msg):
-        if self.selected_topic == "tracked_obj":
-            self.text_frame.config(text=msg.data)
-            self.root.update()  
+    # def text_callback(self, msg):
+    #     if self.selected_topic == "tracked_obj":
+    #         self.text_frame.config(text=msg.data)
+    #         self.root.update()  
         
-    def label_callback(self, msg):
-        if self.selected_topic == "leaf_frames":
-            self.label2.config(text=msg.data)
-            self.root.update()
+    # def label_callback(self, msg):
+    #     if self.selected_topic == "leaf_frames":
+    #         self.label2.config(text=msg.data)
+    #         self.root.update()
+    
+    def text_callback(self, msg):
+        self.text_frame.config(text=msg.data)
+        self.root.update()
 
     def start_video_subscription(self, topic):
         if self.video_subscription:
             self.destroy_subscription(self.video_subscription)
         self.video_subscription = self.create_subscription(Image, topic, self.video_callback, 10)
+        
+    def start_text_subscription(self, topic):
+        if self.text_subscription:
+            self.destroy_subscription(self.text_subscription)
+        self.text_subscription = self.create_subscription(String, topic, self.text_callback, 10)
 
     def video_callback(self, msg):
         img = self.br.imgmsg_to_cv2(msg, desired_encoding=self.encoding)
@@ -92,6 +95,9 @@ class OutputNode(Node):
             # Update the selected topic and subscribe to the new topic
             self.selected_topic = new_topic
             self.start_video_subscription(new_topic)
+            
+            text_topic = "time_topic" if new_topic == "tracked_obj" else "label_topic"
+            self.start_text_subscription(text_topic)
 
             self.switching = False
 
