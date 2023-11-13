@@ -114,7 +114,7 @@ class Detector(Node):
         self.bbox_msg.data = bbox_str ###########
         self.bbox_publisher.publish(self.bbox_msg)
         
-         # Check if a frame has been received from the subscriber
+        # Check if a frame has been received from the subscriber
         if self.filtered_frame is not None:
         # Publish the filtered frame.
         # The 'cv2_to_imgmsg' method converts an OpenCV image to a ROS 2 image message

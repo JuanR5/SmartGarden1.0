@@ -30,7 +30,7 @@ class Leaf_define(Node):
         self.subscription  # prevent unused variable warning
 
 ###        # Create the publisher. This publisher will publish an Image
-        # to the filterA_frames topic. The queue size is 10 messages.
+        # to the topic. The queue size is 10 messages.
         self.publisher_ = self.create_publisher(Image, "leaf_frames", 10)
         self.label_publisher = self.create_publisher(String, 'label_topic', 10)
         self.label_msg = String()
@@ -80,20 +80,6 @@ class Leaf_define(Node):
         predicted_label = f"{label_names[np.argmax(prediction)]}" # Replace this with your predicted label
         confidence = prediction[0][np.argmax(prediction)] * 100
         frame = cv2.resize(frame, (480, 640))  # Resize to a suitable size
-        # Create a blank image to display the label
-        '''label_image = np.zeros((50,640, 3), dtype=np.uint8)
-        label_image.fill(255)  # White background
-        # Add text to the label image
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 0.6
-        font_color = (0, 0, 0)  # Black color
-        font_thickness = 1
-        
-        text = f"{predicted_label} ({confidence:.2f}%)"
-        text_size = cv2.getTextSize(text, font, font_scale, font_thickness)[0]
-        text_x = (label_image.shape[1] - text_size[0]) // 2
-        text_y = (label_image.shape[0] + text_size[1]) // 2
-        cv2.putText(label_image, text, (text_x, text_y), font, font_scale, font_color, font_thickness)'''
 
         # Display the frame with the label
         self.filtered_frame = frame 
@@ -110,12 +96,11 @@ class Leaf_define(Node):
             self.label_publisher.publish(self.label_msg)
             # Check if a frame has been received from the subscriber
             if self.filtered_frame is not None:
-            # Publish the filtered frame.
+                # Publish the filtered frame.
                 upscaled_frame = cv2.resize(self.filtered_frame, (640,480), interpolation=cv2.INTER_LINEAR)
 
-            # Convert to 8-bit RGB (rgb8) format
+                # Convert to 8-bit RGB (rgb8) format
                 filtered_frame_rgb8 = (upscaled_frame* 255).astype(np.uint8)
-                #composite_image = np.vstack((filtered_frame_rgb8, self.label))
                 self.publisher_.publish(self.br.cv2_to_imgmsg(filtered_frame_rgb8, encoding='bgr8'))
             # Display the message on the console
             self.get_logger().info("Publishing leaf state")
